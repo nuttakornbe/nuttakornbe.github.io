@@ -21,7 +21,7 @@
     "start": "webpack-dev-server --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
-    "deploy": "gh-pages -d /dist",
+    "deploy": "gh-pages -d /dist --branch master",
     "publish": "npm run build && npm run deploy"
   },
   "eslintConfig": {
