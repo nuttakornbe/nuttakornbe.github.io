@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
-  devtool: "inline-source-map",
+  devtool: "source-map",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,

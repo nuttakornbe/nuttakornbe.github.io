@@ -8,7 +8,7 @@
     "@types/node": "12.7.5",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
-    "googleapis": "^43.0.0",
+    "googleapis-common": "^3.1.0",
     "lodash-es": "^4.17.15",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -18,6 +18,7 @@
     "tabletop": "^1.5.2"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'dist/*.js'",
     "start": "webpack-dev-server --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
@@ -45,6 +46,8 @@
     "gh-pages": "^2.1.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "purgecss-webpack-plugin": "^1.6.0",
+    "source-map-explorer": "^2.1.0",
     "style-loader": "^1.0.0",
     "ts-loader": "^6.1.2",
     "typescript": "^3.6.3",

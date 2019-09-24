@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import { sheets as googleSheets, auth } from "./sheets-api";
 import { Form, Label, Grid, Step, Icon, Header, Table, Divider } from "semantic-ui-react"
-import { google } from "googleapis";
 import "./App.css";
 
 interface AppProps {
@@ -18,8 +18,10 @@ class App extends Component<{}, AppProps> {
 
   constructor(props: any) {
     super(props);
-    
-    const sheets = google.sheets({
+   
+    // Compile manually per instruction in the following link:
+    // https://github.com/googleapis/google-api-nodejs-client/tree/master/src/apis/sheets    
+    const sheets = googleSheets({      
       version: "v4",
       auth: "AIzaSyCICoHhhvNrgC7s4zU7cVcwjt_UZeRbjP8"
     });
@@ -35,7 +37,7 @@ class App extends Component<{}, AppProps> {
       sheets.spreadsheets.values.get({ 
         spreadsheetId: "11O5N6091nr6swvYClTadIspXGBCFxNFTHJVUD0h0B6o",
         range: "A:D"
-      }).then(res => {      
+      }).then((res) => {      
           const excelValues = res.data.values;
           console.log(JSON.stringify(excelValues));
 
@@ -93,7 +95,8 @@ class App extends Component<{}, AppProps> {
       header = 
         <Form onSubmit={ this.onSubmit }>
           <Form.Group inline>
-            <Form.Input name="trackingId" value={ trackingId } label="Order#" placeholder="" onChange={this.onChange} />    
+            <label>Order#</label>
+            <Form.Input name="trackingId" value={ trackingId } placeholder="" onChange={this.onChange} />    
             <Form.Button content="Submit" />
           </Form.Group>
         </Form>;
