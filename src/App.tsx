@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { sheets as googleSheets, auth } from "./sheets-api";
+import { sheets as googleSheets } from "./sheets-api";
 import { Form, Label, Grid, Step, Icon, Header, Table, Divider } from "semantic-ui-react"
 import "./App.css";
 
