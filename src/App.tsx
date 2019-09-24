@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Progress, Grid, Step, Icon, Header, Table, Divider } from "semantic-ui-react"
+import { Form, Label, Grid, Step, Icon, Header, Table, Divider } from "semantic-ui-react"
 import { google } from "googleapis";
 import "./App.css";
 
@@ -83,7 +83,7 @@ class App extends Component<{}, AppProps> {
                 <Table.Cell>{ orderDate }</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>Estimated Arrival Date</Table.Cell>
+                <Table.Cell>Estimated Arrival Date *</Table.Cell>
                 <Table.Cell>{ arrivalDate }</Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -93,7 +93,7 @@ class App extends Component<{}, AppProps> {
       header = 
         <Form onSubmit={ this.onSubmit }>
           <Form.Group inline>
-            <Form.Input name="trackingId" value={ trackingId } label="Order#" placeholder="123" onChange={this.onChange} />    
+            <Form.Input name="trackingId" value={ trackingId } label="Order#" placeholder="" onChange={this.onChange} />    
             <Form.Button content="Submit" />
           </Form.Group>
         </Form>;
@@ -132,22 +132,22 @@ class App extends Component<{}, AppProps> {
               <Step completed={ result >= 2 } disabled={ result < 2 }>
                 <Icon name="box" />
                 <Step.Content>
-                  <Step.Title>Order Processed</Step.Title>
-                  <Step.Description>จัดซื้อสินค้าแล้ว</Step.Description>
+                  <Step.Title>Order Processed, Shipping to Cargo</Step.Title>
+                  <Step.Description>จัดซื้อสินค้าแล้ว กำลังจัดส่งไปโกดัง</Step.Description>
                 </Step.Content>
               </Step>
               <Step completed={ result >= 3 } disabled={ result < 3 }>
                 <Icon name="warehouse" />
                 <Step.Content>
-                  <Step.Title>Arrived at shipping cargo</Step.Title>
-                  <Step.Description>ของถึงคลังสินค้า</Step.Description>
+                  <Step.Title>Ready to Ship at Cargo</Step.Title>
+                  <Step.Description>สินค้าถึงโกดัง เตรียมจัดส่งกลับไทย</Step.Description>
                 </Step.Content>
               </Step>
               <Step completed={ result >= 4 } disabled={ result < 4 }>
                 <Icon name="plane" />
                 <Step.Content>
                   <Step.Title>Shipped to Thailand</Step.Title>
-                  <Step.Description>ของถูกส่งไปประเทศไทย</Step.Description>
+                  <Step.Description>ของถูกส่งไปประเทศไทย ใช้เวลาประมาณ2อาทิตย์</Step.Description>
                 </Step.Content>
               </Step>       
               <Step completed={ result >= 5 } disabled={ result < 5 }>
@@ -167,6 +167,8 @@ class App extends Component<{}, AppProps> {
             </Step.Group>
           </Grid.Column>        
         </Grid>
+        <br/>
+        <Label size="tiny"><Icon name='asterisk' /> Estimated Arrival Date อาจมีการเปลี่ยนแปลงขึ้นกับปัจจัยหลายๆอย่าง ต้องขออภัยด้วยค่ะ</Label>
       </div>
     );
   }
