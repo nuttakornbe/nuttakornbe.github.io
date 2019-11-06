@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { sheets as googleSheets } from "./sheets-api";
-import { Form, Label, Grid, Step, Icon, Header, Table, Divider } from "semantic-ui-react"
+import { Form, Label, Grid, Step, Icon, Header, Table, Divider, Button } from "semantic-ui-react"
 import "./App.css";
 
 interface AppProps {
@@ -96,8 +96,8 @@ class App extends Component<{}, AppProps> {
         <Form onSubmit={ this.onSubmit }>
           <Form.Group inline>
             <label>Order#</label>
-            <Form.Input name="trackingId" value={ trackingId } placeholder="" onChange={this.onChange} />    
-            <Form.Button content="Submit" />
+            <Form.Input name="trackingId" value={ trackingId } placeholder="" onChange={this.onChange} />   
+            <Button content="Submit" />             
           </Form.Group>
         </Form>;
     }
@@ -135,8 +135,8 @@ class App extends Component<{}, AppProps> {
               <Step completed={ result >= 2 } disabled={ result < 2 }>
                 <Icon name="box" />
                 <Step.Content>
-                  <Step.Title>Order Processed, Shipping to Cargo</Step.Title>
-                  <Step.Description>จัดซื้อสินค้าแล้ว กำลังจัดส่งไปโกดัง</Step.Description>
+                  <Step.Title>Order Processed, Awaiting for shipment</Step.Title>
+                  <Step.Description>จัดซื้อสินค้าแล้ว อยู่ระหว่างรอการจัดส่งไปโกดัง</Step.Description>
                 </Step.Content>
               </Step>
               <Step completed={ result >= 3 } disabled={ result < 3 }>
